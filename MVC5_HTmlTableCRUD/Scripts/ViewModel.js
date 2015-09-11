@@ -50,7 +50,7 @@ define("viewModel", ['jquery',"knockout"], function ($,ko) {
                 type:"GET"
             }).done(function (resp) {
                 self.Employees(resp);
-            }).error(function (err) {
+            }).fail(function (err) {
                 self.Message("Error " + err.status);
             });
         };
@@ -105,7 +105,7 @@ define("viewModel", ['jquery',"knockout"], function ($,ko) {
                         self.Message("Record Updated Successfully ");
                         self.reset();
                     })
-                    .error(function (err) {
+                    .fail(function (err) {
                         self.Message("Error Occures, Please Reload the Page and Try Again " + err.status);
                         self.reset();
                     });
@@ -121,7 +121,7 @@ define("viewModel", ['jquery',"knockout"], function ($,ko) {
                         self.Message("Record Added Successfully ");
                         self.reset();
                         loadData();
-                    }).error(function (err) {
+                    }).fail(function (err) {
                         self.Message("Error Occures, Please Reload the Page and Try Again " + err.status);
                         self.reset();
                     });
@@ -139,7 +139,7 @@ define("viewModel", ['jquery',"knockout"], function ($,ko) {
                     self.reset();
                     loadData();
                 })
-                .error(function (err) {
+                .fail(function (err) {
                     self.Message("Error Occures, Please Reload the Page and Try Again " + err.status);
                     self.reset();
                 });

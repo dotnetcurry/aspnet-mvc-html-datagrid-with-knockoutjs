@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>HTML Table with Fundamental DataGrid Capabilities using Knockout.js DataBinding.</h1>
+<h2 class="center-block">Performing Add, Update, and Delete Operations</h2>
+
+ 
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+<script src="~/Scripts/require.js"></script>
+<script src="~/Scripts/ViewModel.js"></script>
+<script src="~/Scripts/main.js"></script>
+
+
+
+<script type="text/javascript" data-main="~/Scripts/main.js" src="~/Scripts/require.js"></script>
+
+
+<!--html templates -->
+<script type="text/template" id="readonlyTemplate">
+    <tr>
+        <td>
+            <span data-bind="text:EmpNo"></span>
+        </td>
+        <td>
+            <span data-bind="text:EmpName"></span>
+        </td>
+        <td>
+            <span data-bind="text: DeptName"></span>
+        </td>
+        <td>
+            <span data-bind="text: Designation"></span>
+        </td>
+        <td>
+            <span data-bind="text: Salary"></span>
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-edit" 
+                    title="Click here to edit record" data-bind="click: function () { $root.editTemplate($data);}" />
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-trash"
+                    title="Click here to delete record"
+                    data-bind="click:function () { $root.delete($data); }"></button>
+        </td>
+    </tr>
+</script>
+
+<script type="text/html" id="editTemplate">
+    <tr>
+        <td>
+            <input type="text" class="form-control" data-bind="value: $data.EmpNo" id="txteno" disabled="disabled" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: $data.EmpName" id="txtename" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: $data.DeptName" id="txtdname" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: $data.Designation" id="txtdesig" />
+        </td>
+        <td>
+            <input type="text" class="form-control" data-bind="value: $data.Salary" id="txtsal" />
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-floppy-save" title="Click here to save record"
+                    data-bind="click:$root.save"></button>
+        </td>
+        <td>
+            <button class="btn btn-lg glyphicon glyphicon-remove-circle" 
+                    title="Click here to cancel" data-bind="click:$root.reset"></button>
+        </td>
+    </tr>
+</script>
+<!--ends here-->
+
+
+<button type="button" class="btn btn-lg glyphicon glyphicon-plus-sign"
+        title="Click here to add record"
+        data-bind="click:$root.addRecord"></button>
+
+<table class="table table-bordered table-condensed table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">
+                EmpNo
+            </th>
+            <th class="text-center">
+                EmpName
+            </th>
+            <th class="text-center">
+                DeptName
+            </th>
+            <th class="text-center">
+                Desigation
+            </th>
+            <th class="text-center">
+                Salary
+            </th>
+            <th class="text-center">
+            </th>
+            <th class="text-center">
+            </th>
+        </tr>
+    </thead>
+    <tbody data-bind="template: { name: setCurrentTemplate, foreach: Employees }"></tbody>
+</table>
+<hr />
+<div>
+    <span data-bind="value:Message"></span>
+     
+
+</div>
+
+
+
+
+
+
+
+
+
+
